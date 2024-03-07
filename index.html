@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>algorithm pathfinding</title>
+    <script src="./src/Point.js"></script>
+    <script src="./src/Game.js"></script>
+    <script src="./src/GameMap.js"></script>
+    <script src="./src/Player.js"></script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <canvas width="700px" height="700px" style="border: 1px black solid;"></canvas>
+                <br>
+                <span id="coords">MousePos: N/A</span>
+                <span id="searched">Points searched: </span>
+                <span id="path">Path length: </span>
+            </td>
+            <td>
+                <div style=" position: absolute; top: 10px; font-family: 'Courier New', Courier, monospace;">
+                    <h1>Maze algorithms</h1>
+                    <div style="border: 1px black solid; width: 690px; padding: 5px;">
+                        <input id="flod" type="radio" name="algorithm" value="breadth"
+                            data-description="Uses a 4-branch search tree to find a valid route to the end node. Generates path by travelling up the tree from the end point until it reaches the root."
+                            checked> Breadth First Search
+                            <br>
+                        <input type="radio" name="algorithm"
+                            data-description="Labels each node with a distance from the start node until it reaches the end point. It generates the path by going backwards form the end node, following the path with the closest distance to the start. Due to how each node is exactly 1 unit away, Dijkstra's algorithm performs very similarly to BFS."
+                            value="dijkstras"> Dijkstra's algorithm
+                            <br>
+                        <input type="radio" name="algorithm"
+                            data-description="Attempts to find the most optimal path by always choosing the closest node to the end node, backtracking if a dead end is reached. Extremely efficient, but it may not find the fastest path."
+                            value="greedy"> Greedy Best First Search
+                            <br>
+                        <input type="radio" name="algorithm"
+                            data-description="Uses a mixture of both Dijkstra's algorithm and a heuristic in the form of Greedy best first search to find the most optimal path."
+                            value="astar"> A* (the main character)
+                        <br><br>
+                        <span id="description"></span>
+                        <br><br>
+                        Speed:
+                        <input type="range" name="speed" id="speed" min="0" max="5" value="0">
+                        <br>
+                        <button id="newmaze">New maze</button>
+                        <button id="start">Run</button>
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+    <script src="./src/main.js"></script>
+</body>
+
+</html>
